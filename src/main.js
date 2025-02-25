@@ -1,2 +1,4 @@
-import AFRAME from 'aframe';
-import './components/random-color.js';
+import { createApp } from 'vue';
+import App from './Aframe.vue';
+
+createApp(App).mount('#app');
