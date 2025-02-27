@@ -13,6 +13,12 @@
       document.querySelector('a-scene').enterVR();
     }
     document.querySelector('a-scene').emit('enter-scene');
+    const sound1 = document.querySelector('#sound1');
+    sound1.components.sound.playSound();
+    const sound2 = document.querySelector('#ambient');
+    sound2.components.sound.playSound();
+    const sound6 = document.querySelector("#world2_1");
+    sound6.components.sound.stopSound();
   }
 </script>
 

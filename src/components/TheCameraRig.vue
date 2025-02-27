@@ -19,6 +19,7 @@
         simple-navmesh-constraint="navmesh: [data-role='nav-mesh']; height: 1.65;"
         disable-in-vr="component: simple-navmesh-constraint;"
         camera
+        obb-collider
         position="0 1.65 0"
       >
         <a-entity

@@ -1,12 +1,14 @@
-class Player extends Component {
+class Player {
     constructor() {
-        let choices = {
-            1:false,
-            2:false,
-            3:false,
-            4:false
-        }
-        let lvl = 0;
+        this.state = {
+            choices: {
+                1: false,
+                2: false,
+                3: false,
+                4: false
+            },
+            lvl: 0
+        };
     }
 
     toggleChoice(choice) {
@@ -23,6 +25,10 @@ class Player extends Component {
         };
     }
 
+    getChoices() {
+        return this.state.choices;
+    }
+
     resetChoices() {
         this.setState({
             choices: {
@@ -32,6 +38,16 @@ class Player extends Component {
                 4: false
             }
         });
+    }
+
+    toggleLevel() {
+        this.setState(prevState => ({
+            lvl: prevState.lvl === 0 ? 1 : 0
+        }));
+    }
+
+    getLevel() {
+        return this.state.lvl;
     }
 }
 
