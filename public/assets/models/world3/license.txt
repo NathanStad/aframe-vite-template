@@ -1,0 +1,11 @@
+Model Information:
+* title:	City Corner
+* source:	https://sketchfab.com/3d-models/city-corner-46efebbad49d49b2bbe2f0a9a638d9a1
+* author:	Daniel Aucar Felipe (https://sketchfab.com/danielaucar)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "City Corner" (https://sketchfab.com/3d-models/city-corner-46efebbad49d49b2bbe2f0a9a638d9a1) by Daniel Aucar Felipe (https://sketchfab.com/danielaucar) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

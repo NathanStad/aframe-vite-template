@@ -9,6 +9,8 @@ import "../aframe/teleport-camera-rig.js";
 import "../aframe/bloom.js";
 import scene1 from "./world1.vue";
 import scene2 from "./world2.vue";
+import scene3 from "./world3.vue";
+import scene4 from "./world4.vue";
 import Player from "./Player.js";
 
 const allAssetsLoaded = ref(false);
@@ -67,11 +69,19 @@ watch(lvlScene, (newValue) => {
   <a-assets @loaded="allAssetsLoaded = true">
       <a-asset-item
         id="world2"
-        src="/assets/models/scene.gltf"></a-asset-item>
+        src="/assets/models/world1/scene.gltf"></a-asset-item>
+      <a-asset-item
+        id="world3"
+        src="/assets/models/world2/scene.gltf"></a-asset-item>
+      <a-asset-item
+        id="world4"
+        src="/assets/models/world3/scene.gltf"></a-asset-item>
   </a-assets>
   <template v-if="allAssetsLoaded">
     <scene1 @endGame="handleGameEnded" />
     <scene2 @endGame="handleGameEnded" />
+    <scene3 @endGame="handleGameEnded" />
+    <scene4 @endGame="handleGameEnded" />
  
   <a-entity
   id="ambient"

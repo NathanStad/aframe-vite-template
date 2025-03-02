@@ -36,7 +36,7 @@
 
     <a-box
       position="6 2 -7"
-      material="color:black;opacity:0.5;"
+      material="color:black;opacity:0;"
       obb-collider
       @obbcollisionstarted="PlaySound2"
       width="4"
@@ -44,7 +44,7 @@
     ></a-box>
     <a-box
       position="18 2 3"
-      material="color:black;opacity:0.5;"
+      material="color:black;opacity:0;"
       obb-collider
       @obbcollisionstarted="PlaySound3"
       width="2"
@@ -52,7 +52,7 @@
     ></a-box>
     <a-box
       position="0 2 0"
-      material="color:black;opacity:0.5;"
+      material="color:black;opacity:0;"
       obb-collider
       @obbcollisionstarted="PlaySound1"
       width="1"
@@ -65,33 +65,41 @@
     v-if="zone1"
       geometry="primitive: plane; height: 17; width: 18"
       position="9 0 -5.5"
-      rotation="-90 0 0"
+      rotation="-90 0.2 0"
       data-role="nav-mesh"
       material="color: red"
+          visible="false"
+
     ></a-entity>
     <a-entity
     v-if="zone2"
       geometry="primitive: plane; height: 17; width: 3"
-      position="1 0 -5.5"
+      position="1 0.2 -5.5"
       rotation="-90 0 0"
       data-role="nav-mesh"
       material="color: red"
+          visible="false"
+
     ></a-entity>
     <a-entity
     v-if="zone3"
       geometry="primitive: plane; height: 4; width: 3"
-      position="6 0 -7"
+      position="6 0.2 -7"
       rotation="-90 0 0"
       data-role="nav-mesh"
       material="color: red"
+          visible="false"
+
     ></a-entity>
     <a-entity
     v-if="zone4"
       geometry="primitive: plane; height: 5; width: 2"
-      position="17.5 0 3"
+      position="17.5 0.2 3"
       rotation="-90 0 0"
       data-role="nav-mesh"
       material="color: red"
+          visible="false"
+
     ></a-entity>
 
     <!-- Audio -->
@@ -153,7 +161,7 @@ function endGame() {
 }
 
 function PlaySound1() {
-    if(done == 1) {
+    if(done == 2) {
         stopSounds();
         const sound = document.querySelector("#world2_1");
         sound.components.sound.playSound();
@@ -221,7 +229,7 @@ function stopSounds() {
 function teleportPlayer() {
     endGame();
     const cameraRig = document.querySelector("#camera-rig");
-    cameraRig.setAttribute("position", { x: 0, y: 0, z: 0 });
+    cameraRig.setAttribute("position", { x: 0, y: 2000, z: 0 });
 }
 
 </script>

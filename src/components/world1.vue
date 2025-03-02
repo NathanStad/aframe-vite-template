@@ -14,7 +14,7 @@
     material="opacity:0.4;transparent:true;color:#FFFFFF;emissive:#FFFFFF;emissiveIntensity:6"
     emit-when-near
     @click="endGame"
-    teleport-camera-rig="x:0; y:1000; z:0;"
+    teleport-camera-rig="x:500; y:0; z:0;"
   ></a-cylinder>
   <!-- Sol -->
 
