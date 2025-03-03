@@ -16,7 +16,7 @@
       amplitudeVariance="0.1"
       color="#E6E6E6"
     ></a-ocean>
-    
+
     <a-entity
       id="pillier-right"
       gltf-model="#worldEnd"
@@ -59,7 +59,7 @@
       height="100"
       color="#E6E6E6"
     ></a-plane>
-    
+
     <a-sphere
       id="sphere-right-grabbable"
       color="white"
@@ -75,9 +75,9 @@
     <!-- Collider -->
 
     <a-box
-      position="0 2 0"
-      material="color:black;opacity:0.5;"
-      obb-collider="target: #camera-rig"
+      position="0 1.65 0"
+      material="color:black;opacity:0;"
+      obb-collider
       @obbcollisionstarted="PlaySound1"
       width="1"
       depth="1"
@@ -114,66 +114,92 @@
       visible="false"
     ></a-entity>
 
+    <!-- Audio -->
+
+    <a-entity
+      id="world5_1"
+      sound="src: url(/assets/audio/world5_1.mp3); positional: false; volume:2;"
+    ></a-entity>
+    <a-entity
+      id="world5_2"
+      sound="src: url(/assets/audio/world5_2.mp3); positional: false; volume:2;"
+    ></a-entity>
+    <a-entity
+      id="world5_3"
+      sound="src: url(/assets/audio/world5_3.mp3); positional: false; volume:2;"
+    ></a-entity>
+    <a-entity
+      id="world5_4"
+      sound="src: url(/assets/audio/world5_4.mp3); positional: false; volume:2;"
+    ></a-entity>
+    <a-entity
+      id="world5_5"
+      sound="src: url(/assets/audio/world5_5.mp3); positional: false; volume:2;"
+    ></a-entity>
+    <a-entity
+  id="last-stage"
+  teleport-camera-rig="x:500; y:0; z:500;"
+  ></a-entity>
   </a-entity>
 </template>
 
 <script setup>
-import '../aframe/listen-to.js';
-import '../aframe/life-like-automaton.js';
-import '../aframe/sakura-circle.js';
-import { ref, defineProps, defineEmits } from 'vue';
+import "../aframe/listen-to.js";
+import "../aframe/life-like-automaton.js";
+import "../aframe/sakura-circle.js";
+import { ref, defineProps, defineEmits } from "vue";
 
 const props = defineProps({
   choices: {
-    type: Array,
-    required: true
-  }
+    type: Boolean,
+    required: true,
+  },
 });
 
 var gameLost = () => {
-  location.reload();
-}
+  setTimeout(() => {
+    location.reload();
+  }, 5000);
+};
 var gameWon = () => {
-  location.reload();
-}
+  document.querySelector("#last-stage").emit("click");
+};
 const droppedEl = ref(new Map());
 
 function dropHandler(event) {
-  const elId = event.detail.el.getAttribute('id');
-  const dropZoneId = event.detail.dropZone.getAttribute('id');
+  const elId = event.detail.el.getAttribute("id");
+  const dropZoneId = event.detail.dropZone.getAttribute("id");
   droppedEl.value.set(elId, dropZoneId);
-  event.detail.el.removeAttribute('simple-grab');
-
-  if (elId === 'sphere-right-grabbable') {
-    if (dropZoneId === 'drop-zone-right-spot') {
-      const lightPillierLeft = document.querySelector('#light-pillier-left');
-      lightPillierLeft.setAttribute('visible', 'false');
-      PlaySound5();
-    } else if (dropZoneId === 'drop-zone-left-spot') {
-      const lightPillierRight = document.querySelector('#light-pillier-right');
-      lightPillierRight.setAttribute('visible', 'false');
-      if (props.choices.every(choice => choice)) {
-        PlaySound3();
-      } else {
-        PlaySound4();
-      }
+  event.detail.el.removeAttribute("simple-grab");
+  console.log(dropZoneId);
+  if (dropZoneId == "drop-zone-right-spot") {
+    const lightPillierLeft = document.querySelector("#light-pillier-left");
+    lightPillierLeft.setAttribute("visible", "false");
+    PlaySound5();
+  } else if (dropZoneId == "drop-zone-left-spot") {
+    const lightPillierRight = document.querySelector("#light-pillier-right");
+    lightPillierRight.setAttribute("visible", "false");
+    if (props.choices) {
+      PlaySound3();
+    } else {
+      PlaySound4();
     }
   }
 }
 
 function undropHandler(event) {
-  const elId = event.detail.el.getAttribute('id');
+  const elId = event.detail.el.getAttribute("id");
   droppedEl.value.delete(elId);
 }
 
 function onGrabStart() {
-  const lightSphere = document.querySelector('#light-sphere');
-  const lightPillierRight = document.querySelector('#light-pillier-right');
-  const lightPillierLeft = document.querySelector('#light-pillier-left');
+  const lightSphere = document.querySelector("#light-sphere");
+  const lightPillierRight = document.querySelector("#light-pillier-right");
+  const lightPillierLeft = document.querySelector("#light-pillier-left");
 
-  lightSphere.setAttribute('visible', 'false');
-  lightPillierRight.setAttribute('visible', 'true');
-  lightPillierLeft.setAttribute('visible', 'true');
+  lightSphere.setAttribute("visible", "false");
+  lightPillierRight.setAttribute("visible", "true");
+  lightPillierLeft.setAttribute("visible", "true");
   PlaySound2();
 }
 
@@ -181,8 +207,10 @@ let done = 0;
 
 function PlaySound1() {
   if (done == 4) {
+    console.log(props.choices);
+
     stopSounds();
-    const sound = document.querySelector('#world5_1');
+    const sound = document.querySelector("#world5_1");
     sound.components.sound.playSound();
   }
   done = done + 1;
@@ -190,33 +218,33 @@ function PlaySound1() {
 
 var PlaySound2 = () => {
   stopSounds();
-  const sound = document.querySelector('#world5_2');
+  const sound = document.querySelector("#world5_2");
   sound.components.sound.playSound();
-}
+};
 var PlaySound3 = () => {
   stopSounds();
-  const sound = document.querySelector('#world5_3');
+  const sound = document.querySelector("#world5_3");
   sound.components.sound.playSound();
-  sound.addEventListener('sound-ended', () => {
+  sound.addEventListener("sound-ended", () => {
     gameWon();
   });
-}
+};
 var PlaySound4 = () => {
   stopSounds();
-  const sound = document.querySelector('#world5_4');
+  const sound = document.querySelector("#world5_4");
   sound.components.sound.playSound();
-  sound.addEventListener('sound-ended', () => {
+  sound.addEventListener("sound-ended", () => {
     gameLost();
   });
-}
+};
 var PlaySound5 = () => {
   stopSounds();
-  const sound = document.querySelector('#world5_5');
+  const sound = document.querySelector("#world5_5");
   sound.components.sound.playSound();
-  sound.addEventListener('sound-ended', () => {
+  sound.addEventListener("sound-ended", () => {
     gameLost();
   });
-}
+};
 
 function stopSounds() {
   const sound1 = document.querySelector("#world5_1");

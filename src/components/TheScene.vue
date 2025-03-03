@@ -8,7 +8,7 @@ import "../aframe/emit-when-near.js";
 import "../aframe/teleport-camera-rig.js";
 import "../aframe/bloom.js";
 import '../aframe/simple-grab.js';
-import '../aframe/outline.js';
+import '../aframe/clickable.js';
 import scene1 from "./world1.vue";
 import scene2 from "./world2.vue";
 import scene3 from "./world3.vue";
@@ -22,20 +22,39 @@ const lvlScene = ref(1);
 const goodEnding = ref(false); // Add a ref to track the good ending
 
 const handleGameEnded = (event) => {
+  
+  console.log(lvlScene.value);
   console.log(event.message);
-  if (lvlScene.value === 5) {
+  if (lvlScene.value === 4) {
+    choices.value.push(event.choice);
     console.log(choices.value);
-    if (choices.value[0] === true && choices.value[1] === true && choices.value[2] === true) {
+    console.log("test");
+    
+    if (choices.value[1] === true && choices.value[2] === true && choices.value[3] === true) {
       goodEnding.value = true;
+      console.log('Good ending ',goodEnding.value);
     }
     
   } else {
     choices.value.push(event.choice);
     lvlScene.value = ++lvlScene.value;
   }
-  console.log("lvlScene:", lvlScene.value);
+  console.log(choices.value);
+};
+const muteAllSoundsExceptAmbient = () => {
+  const sounds = document.querySelectorAll('a-entity[sound]');
+  sounds.forEach(sound => {
+    if (sound.id !== 'ambient') {
+      sound.components.sound.stopSound();
+    }
+  });
 };
 
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'p') {
+    muteAllSoundsExceptAmbient();
+  }
+});
 </script>
 
 <template>
@@ -50,7 +69,6 @@ const handleGameEnded = (event) => {
       overlayElement: ${overlaySelector};
     `"
     xr-mode-ui="XRMode: xr"
-    outline
     simple-grab
   >
   <a-assets @loaded="allAssetsLoaded = true">
@@ -72,8 +90,8 @@ const handleGameEnded = (event) => {
     <scene2 @endGame="handleGameEnded"/>
     <scene3 @endGame="handleGameEnded" />
     <scene4 @endGame="handleGameEnded" />
-    <sceneEnd @endGame="handleGameEnded" :goodEnding="goodEnding" />
-    <EndScreen v-if="goodEnding" /> <!-- Conditionally render the EndScreen component -->
+    <sceneEnd @endGame="handleGameEnded" :choices="goodEnding" />
+    <EndScreen /> <!-- Conditionally render the EndScreen component -->
  
   <a-entity
   id="ambient"

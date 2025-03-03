@@ -38,9 +38,9 @@
   <!-- Téléporteur -->
 
   <a-box
-    position="-30 2 0"
+    position="-30 1.65 0"
     material="color:black;transparent:true;opacity:0;"
-    obb-collider="target: #camera-rig"
+    obb-collider
     @obbcollisionstarted="teleportAndPlaySound3"
     teleport-camera-rig="x:0; y:0; z:0;on:obbcollisionstarted;"
     width="100"
@@ -48,9 +48,9 @@
     height="15"
   ></a-box>
   <a-box
-    position="30 2 0"
+    position="30 1.65 0"
     material="color:black;transparent:true;opacity:0;"
-    obb-collider="target: #camera-rig"
+    obb-collider
     @obbcollisionstarted="teleportAndPlaySound3"
     teleport-camera-rig="x:0; y:0; z:0;on:obbcollisionstarted;"
     width="100"
@@ -58,18 +58,18 @@
     height="15"
   ></a-box>
   <a-box
-    position="0 2 35"
+    position="0 1.65 35"
     material="color:black;transparent:true;opacity:0;"
-    obb-collider="target: #camera-rig"
+    obb-collider
     @obbcollisionstarted="teleportAndPlaySound3"
     teleport-camera-rig="x:0; y:0; z:0;on:obbcollisionstarted;"
     width="42"
     depth="15"
   ></a-box>
   <a-box
-    position="0 2 -45"
+    position="0 1.65 -45"
     material="color:black;transparent:true;opacity:0;"
-    obb-collider="target: #camera-rig"
+    obb-collider
     @obbcollisionstarted="teleportAndPlaySound3"
     teleport-camera-rig="x:0; y:0; z:0;on:obbcollisionstarted;"
     width="42"

@@ -3,7 +3,7 @@
     <!-- lumière -->
 
     <a-entity
-    v-if="zone1 || zone3 || zone4"
+    v-if="(zone1 || zone3 || zone4) && !choice"
       id="light"
       light="type: ambient; color:white; intensity: 1.5"
       position="0 4 0"
@@ -35,25 +35,25 @@
     <perso position="7 0 -5" color="MediumSpringGreen"></perso>
 
     <a-box
-      position="6 2 -7"
+      position="6 1.65 -7"
       material="color:black;opacity:0;"
-      obb-collider="target: #camera-rig"
+      obb-collider
       @obbcollisionstarted="PlaySound2"
       width="4"
       depth="5"
     ></a-box>
     <a-box
-      position="18 2 3"
+      position="18 1.65 3"
       material="color:black;opacity:0;"
-      obb-collider="target: #camera-rig"
+      obb-collider
       @obbcollisionstarted="PlaySound3"
       width="2"
       depth="3"
     ></a-box>
     <a-box
-      position="0 2 0"
+      position="0 1.65 0"
       material="color:black;opacity:0;"
-      obb-collider="target: #camera-rig"
+      obb-collider
       @obbcollisionstarted="PlaySound1"
       width="1"
       depth="1"
@@ -101,6 +101,10 @@
           visible="false"
 
     ></a-entity>
+  <a-entity
+  id="stage2"
+  teleport-camera-rig="x:0; y:500; z:0;"
+  ></a-entity>
 
     <!-- Audio -->
 
@@ -151,12 +155,14 @@ let done2 = true;
 
 function endGame() {
   stopSounds();
-  const cameraRig = document.querySelector("#camera-rig");
   emit("endGame", {
     message: "World 2 completed",
     choice: choice.value,
   });
-  cameraRig.setAttribute("position", { x: 0, y: 500, z: 0 });  
+  setTimeout(() => {
+
+  document.querySelector("#stage2").emit("click");
+  }, 3000);
 }
 function PlaySound1() {
   if (done == 4) {

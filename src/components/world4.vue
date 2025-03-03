@@ -28,25 +28,25 @@
     <!-- Collider -->
 
     <a-box
-      position="0 2 0"
+      position="0 1.65 0"
       material="color:black;opacity:0.5;"
-      obb-collider="target: #camera-rig"
+      obb-collider
       @obbcollisionstarted="PlaySound1"
       width="1"
       depth="1"
     ></a-box>
     <a-box
-      position="-9 2 0"
+      position="-9 1.65 0"
       material="color:black;opacity:0.5;"
-      obb-collider="target: #camera-rig"
+      obb-collider
       @obbcollisionstarted="PlaySound2"
       width="10"
       depth="25"
     ></a-box>
     <a-box
-      position="8 2 13"
+      position="8 1.65 13"
       material="color:black;opacity:0.5;"
-      obb-collider="target: #camera-rig"
+      obb-collider
       @obbcollisionstarted="PlaySound3"
       width="20"
       depth="10"
@@ -104,33 +104,37 @@
       material="color: red"
       visible="false"
     ></a-entity>
+
+    <a-entity
+  id="stage4"
+  teleport-camera-rig="x:0; y:0; z:500;"
+  ></a-entity>
   </a-entity>
 </template>
 
 <script setup>
 import perso from "./personnage.vue";
-import { defineEmits } from 'vue';
+import { defineEmits, ref } from 'vue';
 const emit = defineEmits(['endGame']);
+const choice = ref(false);
+
 
 function endGame() {
   stopSounds();
-  finished.value = true;
   emit("endGame", {
     message: "World 4 completed",
     choice: choice.value,
   });
-}
-function teleportPlayer() {
-  endGame();
-  const cameraRig = document.querySelector("#camera-rig");
-  cameraRig.setAttribute("position", { x: 0, y: 0, z: 500 });
+  setTimeout(() => {
+  document.querySelector("#stage4").emit("click");
+  }, 3000);
 }
 let done = 0;
 let done2 = false;
 const PlaySound1 = () => {
   if (done == 4) {
     done2 = true;
-
+    
     stopSounds();
     document.getElementById("world4_1").components.sound.playSound();
   }
@@ -139,9 +143,11 @@ const PlaySound1 = () => {
 
 const PlaySound2 = () => {
   if (done2 == true) {
+    done2 = false;
     stopSounds();
     const sound = document.getElementById("world4_2");
     preventMovement();
+    choice.value = true;
     sound.components.sound.playSound();
     sound.addEventListener("sound-ended", () => {
       let sound2 = document.getElementById("i-know");
@@ -149,14 +155,16 @@ const PlaySound2 = () => {
 
       sound2.addEventListener("sound-ended", () => {
         stopSounds();
-        teleportPlayer();
-      });
+        allowMovement()
+        endGame();
+            });
     });
   }
 };
 
 const PlaySound3 = () => {
   if (done2 == true) {
+  done2 = false;
     stopSounds();
     const sound = document.getElementById("world4_3");
 
@@ -168,7 +176,8 @@ const PlaySound3 = () => {
 
       sound2.addEventListener("sound-ended", () => {
         stopSounds();
-        teleportPlayer();
+        allowMovement()
+        endGame();
       });
     });
   }
@@ -176,6 +185,10 @@ const PlaySound3 = () => {
 function preventMovement() {
   const cameraRig = document.querySelector("#camera-rig");
   cameraRig.setAttribute("movement-controls", "enabled", false);
+}
+function allowMovement() {
+  const cameraRig = document.querySelector("#camera-rig");
+  cameraRig.setAttribute("movement-controls", "enabled", true);
 }
 
 function stopSounds() {
