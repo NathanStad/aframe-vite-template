@@ -37,7 +37,7 @@
     <a-box
       position="6 2 -7"
       material="color:black;opacity:0;"
-      obb-collider
+      obb-collider="target: #camera-rig"
       @obbcollisionstarted="PlaySound2"
       width="4"
       depth="5"
@@ -45,7 +45,7 @@
     <a-box
       position="18 2 3"
       material="color:black;opacity:0;"
-      obb-collider
+      obb-collider="target: #camera-rig"
       @obbcollisionstarted="PlaySound3"
       width="2"
       depth="3"
@@ -53,7 +53,7 @@
     <a-box
       position="0 2 0"
       material="color:black;opacity:0;"
-      obb-collider
+      obb-collider="target: #camera-rig"
       @obbcollisionstarted="PlaySound1"
       width="1"
       depth="1"
@@ -137,99 +137,92 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { onMounted, watch, defineEmits } from "vue";
+import { ref, defineEmits } from "vue";
 import perso from "./personnage.vue";
+
+const emit = defineEmits(['endGame']);
 const zone1 = ref(false);
 const zone2 = ref(true);
 const zone3 = ref(false);
 const zone4 = ref(false);
-const finished = ref(false);
 const choice = ref(false);
 let done = 0;
-
-const emit = defineEmits(["endGame"]);
+let done2 = true;
 
 function endGame() {
   stopSounds();
-  finished.value = true;
+  const cameraRig = document.querySelector("#camera-rig");
   emit("endGame", {
-    message: "Game has ended",
+    message: "World 2 completed",
     choice: choice.value,
-    finished: finished.value,
   });
+  cameraRig.setAttribute("position", { x: 0, y: 500, z: 0 });  
 }
-
 function PlaySound1() {
-    if(done == 2) {
-        stopSounds();
-        const sound = document.querySelector("#world2_1");
-        sound.components.sound.playSound();
-        sound.addEventListener("sound-ended", () => {
-            zone1.value = true;
-        });
-    }
-    done = done + 1;
+  if (done == 4) {
+    stopSounds();
+    const sound = document.querySelector("#world2_1");
+    sound.components.sound.playSound();
+    sound.addEventListener("sound-ended", () => {
+      zone1.value = true;
+    });
+  }
+  done = done + 1;
 }
 
-let done1 = true;
 function PlaySound2() {
-    if(done1 == true) {
-        stopSounds();
-        const sound = document.querySelector("#world2_3");
-        sound.components.sound.playSound();
-        done1 = false;
-        zone1.value = false;
-        zone2.value = false;
-        zone3.value = true;
-        zone4.value = false;
-
-        sound.addEventListener("sound-ended", () => {
-            const sound5 = document.querySelector("#world2_5");
-            sound5.components.sound.playSound();
-            sound5.addEventListener("sound-ended", teleportPlayer);
-        });
-    }
+  if(done2){
+    stopSounds();
+    const sound = document.querySelector("#world2_3");
+    sound.components.sound.playSound();
+    zone1.value = false;
+    zone2.value = false;
+    zone3.value = true;
+    zone4.value = false;
+    done2=false;
+    sound.addEventListener("sound-ended", () => {
+      const sound5 = document.querySelector("#world2_5");
+      sound5.components.sound.playSound();
+      sound5.addEventListener("sound-ended", () => {
+        endGame();
+      });
+    });
+  }
 }
 
-let done2 = true;
 function PlaySound3() {
-    if(done2 == true) {
-        stopSounds();
-        const sound = document.querySelector("#world2_4");
-        sound.components.sound.playSound();
-        done2 = false;
-        zone1.value = false;
-        zone2.value = false;
-        zone3.value = false;
-        zone4.value = true;
-
-        sound.addEventListener("sound-ended", () => {
-            const sound5 = document.querySelector("#world2_5");
-            sound5.components.sound.playSound();
-            choice.value = true;
-            sound5.addEventListener("sound-ended", teleportPlayer);
-        });
-    }
+  if(done2){
+    stopSounds();
+    const sound = document.querySelector("#world2_4");
+    sound.components.sound.playSound();
+    zone1.value = false;
+    zone2.value = false;
+    zone3.value = false;
+    zone4.value = true;
+  done2=false;
+    sound.addEventListener("sound-ended", () => {
+      const sound5 = document.querySelector("#world2_5");
+      sound5.components.sound.playSound();
+      choice.value = true;
+      console.log("test");
+      
+      sound5.addEventListener("sound-ended", () => {
+        console.log("test");
+        endGame();
+      });
+    });
+  }
 }
-
 function stopSounds() {
-    const sound1 = document.querySelector("#world2_1");
-    const sound2 = document.querySelector("#world2_2");
-    const sound3 = document.querySelector("#world2_3");
-    const sound4 = document.querySelector("#world2_4");
-    const sound5 = document.querySelector("#world2_5");
-    sound1.components.sound.stopSound();
-    sound2.components.sound.stopSound();
-    sound3.components.sound.stopSound();
-    sound4.components.sound.stopSound();
-    sound5.components.sound.stopSound();
+  const sound1 = document.querySelector("#world2_1");
+  const sound2 = document.querySelector("#world2_2");
+  const sound3 = document.querySelector("#world2_3");
+  const sound4 = document.querySelector("#world2_4");
+  const sound5 = document.querySelector("#world2_5");
+  sound1.components.sound.stopSound();
+  sound2.components.sound.stopSound();
+  sound3.components.sound.stopSound();
+  sound4.components.sound.stopSound();
+  sound5.components.sound.stopSound();
 }
-
-function teleportPlayer() {
-    endGame();
-    const cameraRig = document.querySelector("#camera-rig");
-    cameraRig.setAttribute("position", { x: 0, y: 2000, z: 0 });
-}
-
 </script>

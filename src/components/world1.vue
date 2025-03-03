@@ -14,7 +14,7 @@
     material="opacity:0.4;transparent:true;color:#FFFFFF;emissive:#FFFFFF;emissiveIntensity:6"
     emit-when-near
     @click="endGame"
-    teleport-camera-rig="x:500; y:0; z:0;"
+    teleport-camera-rig="x:0; y:1000; z:0;"
   ></a-cylinder>
   <!-- Sol -->
 
@@ -40,7 +40,7 @@
   <a-box
     position="-30 2 0"
     material="color:black;transparent:true;opacity:0;"
-    obb-collider
+    obb-collider="target: #camera-rig"
     @obbcollisionstarted="teleportAndPlaySound3"
     teleport-camera-rig="x:0; y:0; z:0;on:obbcollisionstarted;"
     width="100"
@@ -50,7 +50,7 @@
   <a-box
     position="30 2 0"
     material="color:black;transparent:true;opacity:0;"
-    obb-collider
+    obb-collider="target: #camera-rig"
     @obbcollisionstarted="teleportAndPlaySound3"
     teleport-camera-rig="x:0; y:0; z:0;on:obbcollisionstarted;"
     width="100"
@@ -60,7 +60,7 @@
   <a-box
     position="0 2 35"
     material="color:black;transparent:true;opacity:0;"
-    obb-collider
+    obb-collider="target: #camera-rig"
     @obbcollisionstarted="teleportAndPlaySound3"
     teleport-camera-rig="x:0; y:0; z:0;on:obbcollisionstarted;"
     width="42"
@@ -69,7 +69,7 @@
   <a-box
     position="0 2 -45"
     material="color:black;transparent:true;opacity:0;"
-    obb-collider
+    obb-collider="target: #camera-rig"
     @obbcollisionstarted="teleportAndPlaySound3"
     teleport-camera-rig="x:0; y:0; z:0;on:obbcollisionstarted;"
     width="42"
@@ -210,7 +210,7 @@ function teleportAndPlaySound3() {
     stopSounds();
     sound5.components.sound.playSound();
   } else {
-    endGame();
+    emit('endGame', { choice: true });
   }
 }
 function stopSounds() {

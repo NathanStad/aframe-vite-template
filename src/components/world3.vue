@@ -43,7 +43,7 @@
     <a-box
       position="0 2 0"
       material="color:black;opacity:0.5;"
-      obb-collider
+      obb-collider="target: #camera-rig"
       @obbcollisionstarted="PlaySound1"
       width="1"
       depth="1"
@@ -51,7 +51,7 @@
     <a-box
       position="0 2 20"
       material="color:black;opacity:0.5;"
-      obb-collider
+      obb-collider="target: #camera-rig"
       @obbcollisionstarted="PlaySound2"
       width="10"
       depth="10"
@@ -86,6 +86,7 @@
       rotation="-90 0 0"
       data-role="nav-mesh"
       material="color: red"
+       visible="false"
     ></a-entity>
     <a-entity
       v-if="locked"
@@ -94,6 +95,7 @@
       rotation="-90 0 0"
       data-role="nav-mesh"
       material="color: red"
+       visible="false"
     ></a-entity>
     <a-entity
       v-if="locked || !wait"
@@ -102,22 +104,39 @@
       rotation="-90 0 0"
       data-role="nav-mesh"
       material="color: red"
+       visible="false"
     ></a-entity>
   </a-entity>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, defineEmits } from "vue";
 import perso from "./personnage.vue";
+
+const emit = defineEmits(['endGame']);
 var locked = ref(false);
 var sing = ref(true);
 var wait = ref(false);
+const finished = ref(false);
+const Fchoice = ref(false);
 var choice = 0;
 
+function endGame() {
+  stopSounds();
+  finished.value = true;
+  emit("endGame", {
+    message: "World 3 completed",
+    choice: Fchoice.value,
+    finished: finished.value,
+  });
+}
+
 let done = 0;
+let done1 = false;
 
 function PlaySound1() {
-  if (done == 2) {
+  if (done == 4) {
+    done1 = true;
     stopSounds();
     const sound = document.querySelector("#world3_1");
     sound.components.sound.playSound();
@@ -132,9 +151,8 @@ function PlaySound1() {
   }
   done = done + 1;
 }
-let done2 = true;
 function PlaySound2() {
-  if (done2 == true && choice == 0) {
+  if (done1 == true && choice == 0) {
     stopSounds();
     choice = 1;
     locked.value = false;
@@ -145,7 +163,6 @@ function PlaySound2() {
     });
   }
 }
-let done1 = true;
 function PlaySound3() {
   if (done1 == true && choice == 0) {
     choice = 2;
@@ -154,10 +171,10 @@ function PlaySound3() {
     const sound = document.querySelector("#world3_2");
     sound.components.sound.playSound();
     sound.addEventListener("sound-ended", () => {
+      stopSounds();
       teleportPlayer();
     });
   }
-  done = done + 1;
 }
 function stopSounds() {
   const sound1 = document.querySelector("#world3_1");
@@ -170,7 +187,7 @@ function stopSounds() {
 function teleportPlayer() {
   endGame();
   const cameraRig = document.querySelector("#camera-rig");
-  cameraRig.setAttribute("position", { x: 0, y: 2000, z: 0 });
+  cameraRig.setAttribute("position", { x: 500, y: 0, z: 0 });
 }
 </script>
 <style></style>

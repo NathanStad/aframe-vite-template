@@ -25,11 +25,12 @@ function enterScene() {
 <template>
   <div id="onboarding" v-if="showOnboarding">
     <div class="hero">
-      <h1>L'Interstice</h1>
+      <h1 style="margin: 2%;">L'Interstice</h1>
       <p>Bienvenue dans L'Interstice, un jeu narratif immersif où l'utilisation du son est obligatoire pour une expérience complète.</p>
+      <img src="/assets/images/headphones-2104207_640.webp" alt="Casque Audio" style="width: 10%;padding: 2%;">
       <p>Veuillez vous assurer que votre casque audio est bien connecté avant de commencer.</p>
       <p v-if="!loaded">Chargement...</p>
-      <button v-if="loaded" @click="enterScene()">Entrer dans la scène</button>
+      <button v-if="loaded" @click="enterScene()" style="padding: 1%; margin: 2%;">Entrer dans la scène</button>
     </div>
     <div class="content">
       <div class="licences">
@@ -43,7 +44,7 @@ function enterScene() {
         </section>
         <section>
           <h4>Code source</h4>
-          <blockquote><a href="https://github.com/Chabloz/a-frame-vite-vue-boilerplate">Répertoire Github</a></blockquote>
+          <blockquote><a href="https://github.com/NathanStad/aframe-vite-template">Répertoire Github</a></blockquote>
         </section>
         <dl>
           <dt><i>Inclus</i></dt>
