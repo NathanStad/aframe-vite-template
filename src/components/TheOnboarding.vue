@@ -62,6 +62,11 @@ function enterScene() {
           <dd>par <a href="https://sketchfab.com/mvrc.art" target="_blank">Maxim Mavrichev</a> sous <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></dd>
           <dt><a href="https://sketchfab.com/3d-models/3d-gallery-for-vr-projects-68f77ed8558c4bd59e0a13e2cc9d1fd1" target="_blank">Modèle de salle de physique</a></dt>
           <dd>par <a href="https://sketchfab.com/tekuto1s" target="_blank">tekuto1s</a> sous <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></dd>
+          <dt>Modèle 3D</dt>
+          <dd><a href="https://sketchfab.com/3d-models/city-corner-46efebbad49d49b2bbe2f0a9a638d9a1" target="_blank">City Corner - Daniel Aucar Felipe</a></dd>
+          <dd><a href="https://sketchfab.com/3d-models/amusement-park-island-9530547b964141909af87148bf13dd49" target="_blank">Amusement Park Island - Omid Saadat</a></dd>
+          <dd><a href="https://sketchfab.com/3d-models/sakura-cherry-blossom-1bba2a5f47a0444f84006bc65c65253e" target="_blank">Sakura / Cherry Blossom- 18gen</a></dd>
+          <dd><a href="https://sketchfab.com/3d-models/kindergarten-classroom-diorama-0e2b86141f6b48bf95cd47ff3548e37b" target="_blank">Kindergarten classroom diorama - Rakku</a></dd>
         </dl>
       </div>
     </div>
