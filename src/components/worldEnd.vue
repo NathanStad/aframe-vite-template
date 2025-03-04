@@ -136,10 +136,7 @@
       id="world5_5"
       sound="src: url(/assets/audio/world5_5.mp3); positional: false; volume:2;"
     ></a-entity>
-    <a-entity
-  id="last-stage"
-  teleport-camera-rig="x:500; y:0; z:500;"
-  ></a-entity>
+
   </a-entity>
 </template>
 
@@ -156,13 +153,18 @@ const props = defineProps({
   },
 });
 
+const emit = defineEmits(["endGame"]);
+
 var gameLost = () => {
   setTimeout(() => {
     location.reload();
   }, 5000);
 };
 var gameWon = () => {
-  document.querySelector("#last-stage").emit("click");
+  emit("endGame", {
+    message: "Game Ended",
+    choice: true,
+  });
 };
 const droppedEl = ref(new Map());
 

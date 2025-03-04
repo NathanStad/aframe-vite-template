@@ -11,6 +11,11 @@
     <!-- contenu -->
 
     <perso position="3 0 25" color="pink"></perso>
+    <perso v-if="show" position="9 0 18" color="darkgrey"></perso>
+    <perso v-if="show" position="6 0 15" color="darkgrey"></perso>
+    <perso v-if="show" position="3 0 13" color="darkgrey"></perso>
+    <perso v-if="show" position="0 0 15" color="darkgrey"></perso>
+    <perso v-if="show" position="-3 0 18" color="darkgrey"></perso>
     <a-entity
       id="main-room"
       gltf-model="#world3"
@@ -121,6 +126,7 @@ const emit = defineEmits(['endGame']);
 var locked = ref(false);
 var sing = ref(true);
 var wait = ref(false);
+const show = ref(false);
 const choice = ref(false);
 
 function endGame() {
@@ -159,6 +165,9 @@ function PlaySound3() {
   if (done1 == true && choice.value == false) {
     stopSounds();
     choice.value = true;
+    done1 = false;
+    show.value = true;
+    sing.value = false;
     locked.value = false;
     const sound = document.querySelector("#world3_3");
     sound.components.sound.playSound();
@@ -172,9 +181,10 @@ function PlaySound3() {
 }
 function PlaySound2() {
   if (done1 == true && choice == false) {
-    choice.value = true;
+    choice.value = false;
     stopSounds();
     wait.value = true;
+    done1 = false;
     const sound = document.querySelector("#world3_2");
     sound.components.sound.playSound();
     sound.addEventListener("sound-ended", () => {

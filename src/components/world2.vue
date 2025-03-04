@@ -11,7 +11,7 @@
     <a-entity
     v-if="zone2 && !zone1"
       id="light"
-      light="type: point; color:white; intensity: 1.5"
+      light="type: point; color:white; intensity: 2.4; decay:0.5"
       position="18 3 3"
     ></a-entity>
 
@@ -34,6 +34,8 @@
     <perso position="7 0 -9" color="Crimson"></perso>
     <perso position="7 0 -5" color="MediumSpringGreen"></perso>
 
+    <!-- Collider -->
+
     <a-box
       position="6 1.65 -7"
       material="color:black;opacity:0;"
@@ -43,12 +45,12 @@
       depth="5"
     ></a-box>
     <a-box
-      position="18 1.65 3"
+      position="17.5 1.65 3"
       material="color:black;opacity:0;"
       obb-collider
       @obbcollisionstarted="PlaySound3"
-      width="2"
-      depth="3"
+      width="3"
+      depth="4"
     ></a-box>
     <a-box
       position="0 1.65 0"
@@ -167,6 +169,7 @@ function endGame() {
 function PlaySound1() {
   if (done == 4) {
     stopSounds();
+
     const sound = document.querySelector("#world2_1");
     sound.components.sound.playSound();
     sound.addEventListener("sound-ended", () => {
