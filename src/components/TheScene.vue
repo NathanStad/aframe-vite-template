@@ -89,10 +89,10 @@ document.addEventListener('keydown', (event) => {
   >
     <!-- Load assets -->
     <a-assets @loaded="allAssetsLoaded = true">
-      <a-asset-item id="world2" src="/assets/models/world1/scene.gltf"></a-asset-item>
-      <a-asset-item id="world3" src="/assets/models/world2/scene.gltf"></a-asset-item>
-      <a-asset-item id="world4" src="/assets/models/world3/scene.gltf"></a-asset-item>
-      <a-asset-item id="worldEnd" src="/assets/models/world4/scene.gltf"></a-asset-item>
+      <a-asset-item id="world2" src="assets/models/world1/scene.gltf"></a-asset-item>
+      <a-asset-item id="world3" src="assets/models/world2/scene.gltf"></a-asset-item>
+      <a-asset-item id="world4" src="assets/models/world3/scene.gltf"></a-asset-item>
+      <a-asset-item id="worldEnd" src="assets/models/world4/scene.gltf"></a-asset-item>
     </a-assets>
 
     <!-- Render scenes conditionally -->
@@ -107,7 +107,7 @@ document.addEventListener('keydown', (event) => {
       <!-- Ambient sound entity -->
       <a-entity
         id="ambient"
-        sound="src: url(/assets/audio/demonic-whisper-100425.mp3); positional: false; volume:0.05; loop:true;"
+        sound="src: url(assets/audio/demonic-whisper-100425.mp3); positional: false; volume:0.05; loop:true;"
       ></a-entity>
     </template>
 

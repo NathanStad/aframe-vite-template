@@ -66,15 +66,15 @@
 
     <a-entity
       id="world3_1"
-      sound="src: url(/assets/audio/world3_1.mp3); positional: false; volume:2;"
+      sound="src: url(assets/audio/world3_1.mp3); positional: false; volume:2;"
     ></a-entity>
     <a-entity
       id="world3_2"
-      sound="src: url(/assets/audio/world3_2.mp3); positional: false; volume:2;"
+      sound="src: url(assets/audio/world3_2.mp3); positional: false; volume:2;"
     ></a-entity>
     <a-entity
       id="world3_3"
-      sound="src: url(/assets/audio/world3_3.mp3); positional: false; volume:2;"
+      sound="src: url(assets/audio/world3_3.mp3); positional: false; volume:2;"
     ></a-entity>
 
     <a-entity

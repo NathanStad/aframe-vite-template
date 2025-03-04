@@ -80,25 +80,25 @@
 
   <a-entity
     id="sound1"
-    sound="src: url(/assets/audio/world1_1.mp3); positional: false; volume:2;"
+    sound="src: url(assets/audio/world1_1.mp3); positional: false; volume:2;"
   ></a-entity>
   <a-entity
     id="sound2"
     class="soundsRepeat"
-    sound="src: url(/assets/audio/world1_2.mp3); positional: false; volume:2; autoplay: false"
+    sound="src: url(assets/audio/world1_2.mp3); positional: false; volume:2; autoplay: false"
   ></a-entity>
   <a-entity
     id="sound3"
     class="soundsRepeat"
-    sound="src: url(/assets/audio/world1_3.mp3); positional: false; volume:2; autoplay: false"
+    sound="src: url(assets/audio/world1_3.mp3); positional: false; volume:2; autoplay: false"
   ></a-entity>
   <a-entity
     id="sound4"
-    sound="src: url(/assets/audio/world1_4.mp3); positional: false; volume:2; autoplay: false"
+    sound="src: url(assets/audio/world1_4.mp3); positional: false; volume:2; autoplay: false"
   ></a-entity>
   <a-entity
     id="sound5"
-    sound="src: url(/assets/audio/world1_5.mp3); positional: false; volume:2; autoplay: false"
+    sound="src: url(assets/audio/world1_5.mp3); positional: false; volume:2; autoplay: false"
   ></a-entity>
 
     <!-- NavMesh -->

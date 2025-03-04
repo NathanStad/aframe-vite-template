@@ -27,7 +27,7 @@ function enterScene() {
     <div class="hero">
       <h1 style="margin: 2%;">L'Interstice</h1>
       <p>Bienvenue dans L'Interstice, un jeu narratif immersif où l'utilisation du son est obligatoire pour une expérience complète.</p>
-      <img src="/assets/images/headphones-2104207_640.webp" alt="Casque Audio" style="width: 10%;padding: 2%;">
+      <img src="assets/images/headphones-2104207_640.webp" alt="Casque Audio" style="width: 10%;padding: 2%;">
       <p>Veuillez vous assurer que votre casque audio est bien connecté avant de commencer.</p>
       <p v-if="!loaded">Chargement...</p>
       <button v-if="loaded" @click="enterScene()" style="padding: 1%; margin: 2%;">Entrer dans la scène</button>
