@@ -9,11 +9,11 @@ const showOnboarding = ref(true);
 
 function enterScene() {
   showOnboarding.value = false;
-  if (AFRAME.utils.device.checkHeadsetConnected() && !AFRAME.utils.device.isMobile()) {
-    document.querySelector('a-scene').enterVR();
-  }
-  document.querySelector('a-scene').emit('enter-scene');
-  const sound1 = document.querySelector('#sound1');
+    if (AFRAME.utils.device.checkHeadsetConnected() && !AFRAME.utils.device.isMobile()) {
+      document.querySelector('a-scene').enterVR();
+    }
+    document.querySelector('a-scene').emit('enter-scene');  
+    const sound1 = document.querySelector('#world1_1');
   sound1.components.sound.playSound();
   const sound2 = document.querySelector('#ambient');
   sound2.components.sound.playSound();
@@ -27,7 +27,7 @@ function enterScene() {
     <div class="hero">
       <h1 style="margin: 2%;">L'Interstice</h1>
       <p>Bienvenue dans L'Interstice, un jeu narratif immersif où l'utilisation du son est obligatoire pour une expérience complète.</p>
-      <img src="assets/images/headphones-2104207_640.webp" alt="Casque Audio" style="width: 10%;padding: 2%;">
+      <img src="https://e7.pngegg.com/pngimages/602/268/png-clipart-music-internet-radio-dhol-christian-music-typing-blue-electronics.png" alt="Casque Audio" style="width: 10%;padding: 2%;">
       <p>Veuillez vous assurer que votre casque audio est bien connecté avant de commencer.</p>
       <p v-if="!loaded">Chargement...</p>
       <button v-if="loaded" @click="enterScene()" style="padding: 1%; margin: 2%;">Entrer dans la scène</button>

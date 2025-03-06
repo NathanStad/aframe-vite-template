@@ -93,6 +93,33 @@ document.addEventListener('keydown', (event) => {
       <a-asset-item id="world3" src="assets/models/world2/scene.gltf"></a-asset-item>
       <a-asset-item id="world4" src="assets/models/world3/scene.gltf"></a-asset-item>
       <a-asset-item id="worldEnd" src="assets/models/world4/scene.gltf"></a-asset-item>
+      <!-- Sound assets -->
+      <a-asset-item id="sound1" response-type="arraybuffer" src="assets/audio/world1_1.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="sound2" response-type="arraybuffer" src="assets/audio/world1_2.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="sound3" response-type="arraybuffer" src="assets/audio/world1_3.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="sound4" response-type="arraybuffer" src="assets/audio/world1_4.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="sound5" response-type="arraybuffer" src="assets/audio/world1_5.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="sound6" response-type="arraybuffer" src="assets/audio/world2_1.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="sound7" response-type="arraybuffer" src="assets/audio/world2_2.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="sound8" response-type="arraybuffer" src="assets/audio/world2_3.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="sound9" response-type="arraybuffer" src="assets/audio/world2_4.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="sound10" response-type="arraybuffer" src="assets/audio/world2_5.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="sound11" response-type="arraybuffer" src="assets/audio/world3_1.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="sound12" response-type="arraybuffer" src="assets/audio/world3_2.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="sound13" response-type="arraybuffer" src="assets/audio/world3_3.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="sound14" response-type="arraybuffer" src="assets/audio/world4_2.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="sound15" response-type="arraybuffer" src="assets/audio/world4_3.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="sound16" response-type="arraybuffer" src="assets/audio/world4_4.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="sound17" response-type="arraybuffer" src="assets/audio/world5_1.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="sound18" response-type="arraybuffer" src="assets/audio/world5_2.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="sound19" response-type="arraybuffer" src="assets/audio/world5_3.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="sound20" response-type="arraybuffer" src="assets/audio/world5_4.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="sound21" response-type="arraybuffer" src="assets/audio/world5_5.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="sound22" response-type="arraybuffer" src="assets/audio/whispering-i-know-81647.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="sound23" response-type="arraybuffer" src="assets/audio/demonic-whisper-100425.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="kids_crowd" response-type="arraybuffer" src="assets/audio/kids-crowd-theatre-09-25979.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="audio_cry" response-type="arraybuffer" src="assets/audio/audio_cry.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="sing" response-type="arraybuffer" src="assets/audio/la-la-la-youx27re-my-sunshine-woman-229856.mp3" preload="auto"></a-asset-item>
     </a-assets>
 
     <!-- Render scenes conditionally -->
@@ -107,7 +134,7 @@ document.addEventListener('keydown', (event) => {
       <!-- Ambient sound entity -->
       <a-entity
         id="ambient"
-        sound="src: url(assets/audio/demonic-whisper-100425.mp3); positional: false; volume:0.05; loop:true;"
+        sound="src: #sound23; positional: false; volume:0.05; loop:true;"
       ></a-entity>
     </template>
 

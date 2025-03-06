@@ -66,19 +66,19 @@
 
     <a-entity
       id="world4_1"
-      sound="src: url(assets/audio/world4_2.mp3); positional: false; volume:2;"
+      sound="src: #sound14; positional: false; volume:2;"
     ></a-entity>
     <a-entity
       id="world4_2"
-      sound="src: url(assets/audio/world4_3.mp3); positional: false; volume:2;"
+      sound="src: #sound15; positional: false; volume:2;"
     ></a-entity>
     <a-entity
       id="world4_3"
-      sound="src: url(assets/audio/world4_4.mp3); positional: false; volume:2;"
+      sound="src: #sound16; positional: false; volume:2;"
     ></a-entity>
     <a-entity
       id="i-know"
-      sound="src: url(assets/audio/whispering-i-know-81647.mp3); positional: false; volume:1;"
+      sound="src: #sound22; positional: false; volume:1;"
     ></a-entity>
 
     <a-entity

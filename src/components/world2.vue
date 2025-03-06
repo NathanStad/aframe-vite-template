@@ -112,31 +112,31 @@
 
     <a-entity
       id="world2_1"
-      sound="src: url(assets/audio/world2_1.mp3); positional: false; volume:2;"
+      sound="src: #sound6; positional: false; volume:2;"
     ></a-entity>
     <a-entity
       id="world2_2"
-      sound="src: url(assets/audio/world2_2.mp3); positional: false; volume:2;"
+      sound="src: #sound7; positional: false; volume:2;"
     ></a-entity>
     <a-entity
       id="world2_3"
-      sound="src: url(assets/audio/world2_3.mp3); positional: false; volume:2;"
+      sound="src: #sound8; positional: false; volume:2;"
     ></a-entity>
     <a-entity
       id="world2_4"
-      sound="src: url(assets/audio/world2_4.mp3); positional: false; volume:2;"
+      sound="src: #sound9; positional: false; volume:2;"
     ></a-entity>
     <a-entity
       id="world2_5"
-      sound="src: url(assets/audio/world2_5.mp3); positional: false; volume:2;"
+      sound="src: #sound10; positional: false; volume:2;"
     ></a-entity>
 
     <a-entity
-      sound="src: url(assets/audio/audio_cry.mp3); volume:1; autoplay: true; loop:true"
+      sound="src: #audio_cry; volume:1; autoplay: true; loop:true"
       position="18 0 3"
     ></a-entity>
     <a-entity
-      sound="src: url(assets/audio/kids-crowd-theatre-09-25979.mp3); volume:2; autoplay: true; loop:true"
+      sound="src: #kids_crowd; volume:2; autoplay: true; loop:true"
       position="5 0 -6"
     ></a-entity>
   </a-entity>

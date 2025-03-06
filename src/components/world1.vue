@@ -79,26 +79,26 @@
   <!-- Audio -->
 
   <a-entity
-    id="sound1"
-    sound="src: url(assets/audio/world1_1.mp3); positional: false; volume:2;"
+    id="world1_1"
+    sound="src: #sound1; positional: false; volume:2;"
   ></a-entity>
   <a-entity
-    id="sound2"
+    id="world1_2"
     class="soundsRepeat"
-    sound="src: url(assets/audio/world1_2.mp3); positional: false; volume:2; autoplay: false"
+    sound="src: #sound2; positional: false; volume:2; autoplay: false"
   ></a-entity>
   <a-entity
-    id="sound3"
+    id="world1_3"
     class="soundsRepeat"
-    sound="src: url(assets/audio/world1_3.mp3); positional: false; volume:2; autoplay: false"
+    sound="src: #sound3; positional: false; volume:2; autoplay: false"
   ></a-entity>
   <a-entity
-    id="sound4"
-    sound="src: url(assets/audio/world1_4.mp3); positional: false; volume:2; autoplay: false"
+    id="world1_4"
+    sound="src: #sound4; positional: false; volume:2; autoplay: false"
   ></a-entity>
   <a-entity
-    id="sound5"
-    sound="src: url(assets/audio/world1_5.mp3); positional: false; volume:2; autoplay: false"
+    id="world1_5"
+    sound="src: #sound5; positional: false; volume:2; autoplay: false"
   ></a-entity>
 
     <!-- NavMesh -->
@@ -138,8 +138,8 @@ const props = {
 };
 const handleSoundEvents = () => {
   const checkAudioElements = setInterval(() => {
-    const firstSound = document.querySelector("#sound1");
-    const secondSound = document.querySelector("#sound2");
+    const firstSound = document.querySelector("#world1_1");
+    const secondSound = document.querySelector("#world1_2");
     const allSound = document.querySelectorAll(".soundsRepeat");
 
     if (firstSound && secondSound) {
@@ -180,9 +180,9 @@ function teleportAndPlaySound3() {
   console.log("test");
   const cylindre = document.querySelector("#cylindre");
   const lumiere = document.querySelector("#light");
-  const sound3 = document.querySelector("#sound3");
-  const sound4 = document.querySelector("#sound4");
-  const sound5 = document.querySelector("#sound5");
+  const sound3 = document.querySelector("#world1_3");
+  const sound4 = document.querySelector("#world1_4");
+  const sound5 = document.querySelector("#world1_5");
   if (lvlScene.value === 1) {
     lvlScene.value = 2;
     cylindre.setAttribute("radius", 2);
@@ -214,11 +214,11 @@ function teleportAndPlaySound3() {
   }
 }
 function stopSounds() {
-  const sound1 = document.querySelector("#sound1");
-  const sound2 = document.querySelector("#sound2");
-  const sound3 = document.querySelector("#sound3");
-  const sound4 = document.querySelector("#sound4");
-  const sound5 = document.querySelector("#sound5");
+  const sound1 = document.querySelector("#world1_1");
+  const sound2 = document.querySelector("#world1_2");
+  const sound3 = document.querySelector("#world1_3");
+  const sound4 = document.querySelector("#world1_4");
+  const sound5 = document.querySelector("#world1_5");
   const sound6 = document.querySelector("#world2_1");
   sound1.components.sound.stopSound();
   sound2.components.sound.stopSound();

@@ -66,20 +66,20 @@
 
     <a-entity
       id="world3_1"
-      sound="src: url(assets/audio/world3_1.mp3); positional: false; volume:2;"
+      sound="src: #sound11; positional: false; volume:2;"
     ></a-entity>
     <a-entity
       id="world3_2"
-      sound="src: url(assets/audio/world3_2.mp3); positional: false; volume:2;"
+      sound="src: #sound12; positional: false; volume:2;"
     ></a-entity>
     <a-entity
       id="world3_3"
-      sound="src: url(assets/audio/world3_3.mp3); positional: false; volume:2;"
+      sound="src: #sound13; positional: false; volume:2;"
     ></a-entity>
 
     <a-entity
       v-if="sing"
-      sound="src: url(/assets/audio/la-la-la-youx27re-my-sunshine-woman-229856.mp3); volume:1; autoplay: true; loop:true"
+      sound="src: #sing; volume:1; autoplay: true; loop:true"
       position="3 0 25"
     ></a-entity>
 

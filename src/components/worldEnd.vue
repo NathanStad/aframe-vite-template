@@ -118,23 +118,23 @@
 
     <a-entity
       id="world5_1"
-      sound="src: url(/assets/audio/world5_1.mp3); positional: false; volume:2;"
+      sound="src: #sound17; positional: false; volume:2;"
     ></a-entity>
     <a-entity
       id="world5_2"
-      sound="src: url(/assets/audio/world5_2.mp3); positional: false; volume:2;"
+      sound="src: #sound18; positional: false; volume:2;"
     ></a-entity>
     <a-entity
       id="world5_3"
-      sound="src: url(/assets/audio/world5_3.mp3); positional: false; volume:2;"
+      sound="src: #sound19; positional: false; volume:2;"
     ></a-entity>
     <a-entity
       id="world5_4"
-      sound="src: url(/assets/audio/world5_4.mp3); positional: false; volume:2;"
+      sound="src: #sound20; positional: false; volume:2;"
     ></a-entity>
     <a-entity
       id="world5_5"
-      sound="src: url(/assets/audio/world5_5.mp3); positional: false; volume:2;"
+      sound="src: #sound21; positional: false; volume:2;"
     ></a-entity>
 
   </a-entity>
